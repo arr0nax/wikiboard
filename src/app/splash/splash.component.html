@@ -1,3 +1,4 @@
-<p>
-  splash works!
-</p>
+
+  <ul>
+    <li *ngFor="let category of categories" (click)="goToCategoryPage(category)">{{category.name}}</li>
+  </ul>

@@ -6,11 +6,17 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
 import { routing } from './app.routing';
+import { CategoryComponent } from './category/category.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { CategoryPipe } from './category.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SplashComponent
+    SplashComponent,
+    CategoryComponent,
+    PostListComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,

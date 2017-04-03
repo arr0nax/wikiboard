@@ -1,0 +1,15 @@
+<div class="col-md-5">
+
+<ul>
+  <div  *ngFor='let post of posts | category:categoryId'>
+    <li (click)="selectPost(post)">{{post.title}}</li>
+  </div>
+</ul>
+</div>
+<div class="col-md-7">
+  <ul *ngIf='selectedPost'>
+    <h3>{{selectedPost.author}}</h3>
+    <h2>{{selectedPost.title}}</h2>
+    <h3>{{selectedPost.body}}</h3>
+  </ul>
+</div>
