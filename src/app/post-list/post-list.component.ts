@@ -33,6 +33,14 @@ export class PostListComponent implements OnInit {
       this.safeVideo = this.sanitizer.bypassSecurityTrustHtml(tempVideoUrl);
     });
   }
+
+  upVote(selectedPost) {
+    selectedPost.popularity += 1;
+  }
+
+  downVote(selectedPost) {
+    selectedPost.popularity -= 1;
+  }
   ngOnInit() {
   }
 

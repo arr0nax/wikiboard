@@ -10,6 +10,7 @@ import { routing } from './app.routing';
 import { CategoryComponent } from './category/category.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { CategoryPipe } from './category.pipe';
+import { PopularityPipe } from './popularity.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CategoryPipe } from './category.pipe';
     SplashComponent,
     CategoryComponent,
     PostListComponent,
-    CategoryPipe
+    CategoryPipe,
+    PopularityPipe
   ],
   imports: [
     BrowserModule,

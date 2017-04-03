@@ -1,17 +1,29 @@
-<div class="col-md-5">
+<div class="col-md-4">
 
 <ul>
-  <div  *ngFor='let post of posts | category:categoryId'>
+  <div  *ngFor='let post of posts | category:categoryId | popularity'>
     <li (click)="selectPost(post)">{{post.title}}</li>
   </div>
 </ul>
 </div>
-<div class="col-md-7">
-  <ul *ngIf='selectedPost'>
-    <h3>{{selectedPost.author}}</h3>
-    <h2>{{selectedPost.title}}</h2>
-    <h3>{{selectedPost.body}}</h3>
-    <div [innerHTML]=safeVideo>
-    </div>
-  </ul>
+<div *ngIf='selectedPost'>
+  <div class="col-md-1">
+    <td class="votecell">
+      <div class="vote">
+        <h1 (click)="upVote(selectedPost)">⬆️</h1>
+         <h3>{{selectedPost.popularity}}</h3>
+        <h1 (click)="downVote(selectedPost)">⬇️</h1>
+        </div>
+      </td>
+  </div>
+  <div class="col-md-7">
+    <ul >
+      <h3>{{selectedPost.author}}</h3>
+      <h2>{{selectedPost.title}}</h2>
+      <h3>{{selectedPost.body}}</h3>
+      <div [innerHTML]=safeVideo>
+      </div>
+
+    </ul>
+  </div>
 </div>
