@@ -11,7 +11,15 @@ import { CategoryComponent } from './category/category.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { CategoryPipe } from './category.pipe';
 import { PopularityPipe } from './popularity.pipe';
+import { AngularFireModule } from 'angularfire2';
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyDdgDzVt5NGGSf3kly85cYnUTJeyj2Zs0E",
+   authDomain: "wiki-board-e00b0.firebaseapp.com",
+   databaseURL: "https://wiki-board-e00b0.firebaseio.com",
+   projectId: "wiki-board-e00b0",
+   storageBucket: "wiki-board-e00b0.appspot.com"
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +33,8 @@ import { PopularityPipe } from './popularity.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [ GetVideoService ],
   bootstrap: [AppComponent]

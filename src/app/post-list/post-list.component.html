@@ -1,7 +1,7 @@
 <div class="col-md-4">
 
 <ul>
-  <div  *ngFor='let post of posts | category:categoryId | popularity'>
+  <div  *ngFor='let post of (posts | async)?category:categoryId | popularity'>
     <li (click)="selectPost(post)">{{post.title}}</li>
   </div>
 </ul>

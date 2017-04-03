@@ -1,28 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Post } from '../post';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { GetVideoService } from '../get-video.service'
+import { GetVideoService } from '../get-video.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { GetFireService } from '../get-fire.service';
 
 @Component({
   selector: 'app-post-list',
+  providers: [GetFireService],
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
   @Input() categoryId: number;
-  constructor(private sanitizer: DomSanitizer, private getVideo: GetVideoService) { }
+  constructor(private sanitizer: DomSanitizer, private getVideo: GetVideoService, private fireService: GetFireService) { }
 
-  mode = "Observable";
+  posts;
   selectedPost: Post = null;
   safeVideo: SafeHtml = null;
 
-  posts: Post[] = [
-    new Post('spookFan420','why no ghosts?','i love ghosts, but i havent seen any :( where are they?', 'https://www.youtube.com/embed/m9We2XsVZfc', 3),
-    new Post('booboo', 'im spooked', 'i saw a meme that was too scary and now i cant sleep or eat D:','https://www.youtube.com/embed/m9We2XsVZfc',3),
-    new Post('braveboy', 'aint', 'afraid of no ghosts!!','https://www.youtube.com/embed/m9We2XsVZfc',3),
-    new Post('Comrade85', 'question', 'why no potato?','https://www.youtube.com/embed/m9We2XsVZfc',5),
-    new Post('friend', 'bear waving', 'blah', 'dfa',2)
-  ]
 
   selectPost(post) {
     this.selectedPost = post;
@@ -41,7 +37,12 @@ export class PostListComponent implements OnInit {
   downVote(selectedPost) {
     selectedPost.popularity -= 1;
   }
+
   ngOnInit() {
-  }
+    this.fireService.fetchData().subscribe(
+      data => { this.posts = data;
+        console.log(data);
+    })
+  };
 
 }

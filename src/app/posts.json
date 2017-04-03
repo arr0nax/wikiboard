@@ -1,0 +1,44 @@
+{
+  "posts": [{
+    "author":"spookFan420",
+    "title":"why no ghosts?",
+    "body":"i love ghosts, but i havent seen any :( where are they?",
+    "id": 3,
+    "popularity": 7
+  },
+  {
+    "author":"booboo",
+    "title":"im spooked",
+    "body": "i saw a meme that was too scary and now i cant sleep or eat D:",
+    "id": 3,
+    "popularity": 7
+  },
+  {
+    "author":"braveboy",
+    "title":"aint",
+    "body":"afraid of no ghosts!!",
+    "id": 3,
+    "popularity": 7
+  },
+  {
+    "author":"Comrade85",
+    "title":"question",
+    "body": "why no potato?",
+    "id": 5,
+    "popularity": 7
+  },
+  {
+    "author": "friend",
+    "title": "polite bear waves hello",
+    "body": "al",
+    "id": 2,
+    "popularity": 7
+  },
+  {
+    "author": "carlos",
+    "title": "bromancing - the music video",
+    "body": "haha",
+    "id": 1,
+    "popularity": 7
+  }]
+}
