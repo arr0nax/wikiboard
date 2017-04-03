@@ -12,7 +12,7 @@ export class PostListComponent implements OnInit {
   @Input() categoryId: number;
   constructor(private sanitizer: DomSanitizer, private getVideo: GetVideoService) { }
 
-
+  mode = "Observable";
   selectedPost: Post = null;
   safeVideo: SafeHtml = null;
 
@@ -20,14 +20,18 @@ export class PostListComponent implements OnInit {
     new Post('spookFan420','why no ghosts?','i love ghosts, but i havent seen any :( where are they?', 'https://www.youtube.com/embed/m9We2XsVZfc', 3),
     new Post('booboo', 'im spooked', 'i saw a meme that was too scary and now i cant sleep or eat D:','https://www.youtube.com/embed/m9We2XsVZfc',3),
     new Post('braveboy', 'aint', 'afraid of no ghosts!!','https://www.youtube.com/embed/m9We2XsVZfc',3),
-    new Post('Comrade85', 'question', 'why no potato?','https://www.youtube.com/embed/m9We2XsVZfc',5)
+    new Post('Comrade85', 'question', 'why no potato?','https://www.youtube.com/embed/m9We2XsVZfc',5),
+    new Post('friend', 'bear waving', 'blah', 'dfa',2)
   ]
 
   selectPost(post) {
-    this.getVideo.search(post.author);
     this.selectedPost = post;
-    var tempVideo = '<iframe src="' + post.videoUrl + '" width="700" height="500"></iframe>';
-    this.safeVideo = this.sanitizer.bypassSecurityTrustHtml(tempVideo);
+    this.getVideo.search(post.title).subscribe(res => {
+      post.videoUrl = res;
+      console.log(post.videoUrl.items[0].id.videoId);
+      var tempVideoUrl = '<iframe src="https://www.youtube.com/embed/' + post.videoUrl.items[0].id.videoId + '" width="700" height="500"></iframe>';
+      this.safeVideo = this.sanitizer.bypassSecurityTrustHtml(tempVideoUrl);
+    });
   }
   ngOnInit() {
   }
