@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { DomSanitizer } from '@angular/platform-browser';
+import { GetVideoService } from './get-video.service'
 import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
 import { routing } from './app.routing';
@@ -24,7 +25,7 @@ import { CategoryPipe } from './category.pipe';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [ GetVideoService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
